@@ -1,0 +1,18 @@
+.YoutubeIconContainer{
+   
+    display: flex;
+    justify-content: space-around;
+    width: 14%;
+    align-items: center;
+    cursor: pointer;
+}
+.YoutubeImageContainer{
+    
+    height: 40%;
+    width: 100px;
+}
+.YoutubeImageContainer>img
+{
+   height: 100%;
+    width: 100%;
+}

@@ -1,0 +1,29 @@
+.inputContainer
+{
+    border: 1px solid rgb(153, 152, 152);
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 9999px; /* Full rounded */
+  overflow: hidden;
+ 
+}
+.inputContainer>input{
+    width: 90%;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+.inputContainer>button{
+    width: 10%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: none;
+    border-left: 1px solid silver;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}

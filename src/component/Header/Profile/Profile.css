@@ -1,0 +1,43 @@
+.ProfileIconContainer
+{
+   
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    
+}
+.createContainer
+{
+   
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    background-color: #f2f2f2;
+    width: 40%;
+
+}
+.createContainer>p
+{
+    height: 100%;
+    font-size: 20px;
+}
+
+
+.notificationConatainer{
+   
+}
+.ProfileImageConatainer{
+
+   
+}
+*{
+   box-sizing: border-box;
+   margin:0;
+   padding:0;
+}
