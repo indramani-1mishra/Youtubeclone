@@ -1,0 +1,29 @@
+.IconTitileContainer {
+    width: 11%;  /* 🔹 Pura width le */
+    display: flex;
+    align-items: center;
+    gap: 10px;  /* 🔹 Gap ko kam karna */
+    padding: 8px 10px; /* 🔹 Thoda padding de */
+    text-transform: capitalize;
+}
+
+.IconConatainer1 {
+    width: auto; /* 🔹 Fixed width hata diya */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titleContainer2 {
+    width: auto; 
+    display: flex;
+    align-items: center; 
+    font-size: 14px; /* 🔹 Font size thoda chhota kar diya */
+    font-weight: 500;
+    padding-left: 5px; /* 🔹 Thoda left spacing */
+}
+
+.IconTitileContainer:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}

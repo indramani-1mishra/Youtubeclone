@@ -1,0 +1,26 @@
+.completeSlidbarConatiner {
+   
+    width: 11%;
+    overflow-y: auto; /* 🔹 Scrollbar enable karega */
+    overflow-x: hidden; /* 🔹 Horizontal scroll hata dega */
+    position: fixed;
+    top: 60px; /* 🔹 Header ke neeche adjust karega */
+    left: 0;
+    height: calc(100vh - 60px); /* 🔹 Full height sidebar (header ke alawa) */
+    background-color: white;
+    z-index: 100;
+}
+
+/* 🔹 Scrollbar ko style karne ke liye (optional) */
+.completeSlidbarConatiner::-webkit-scrollbar {
+    width: 6px; /* 🔹 Scrollbar ki width */
+}
+
+.completeSlidbarConatiner::-webkit-scrollbar-thumb {
+    background: #c0c0c0; /* 🔹 Scrollbar ka color */
+    border-radius: 5px; /* 🔹 Round edges */
+}
+
+.completeSlidbarConatiner::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0; /* 🔹 Hover effect */
+}
