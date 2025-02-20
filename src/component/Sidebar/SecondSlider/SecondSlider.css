@@ -1,0 +1,17 @@
+.icontitleContainer{
+    
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+}
+.icontitleContainer:hover
+{
+    transform: scale(1.05);
+    transition: transform 0.2s;
+    cursor: pointer;
+    background-color: aliceblue;
+
+}

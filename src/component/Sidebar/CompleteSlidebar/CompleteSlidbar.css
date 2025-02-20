@@ -1,26 +1,44 @@
-.completeSlidbarConatiner {
-   
-    width: 11%;
-    overflow-y: auto; /* 🔹 Scrollbar enable karega */
-    overflow-x: hidden; /* 🔹 Horizontal scroll hata dega */
+/* Main Sidebar Container */
+.CompleteSlidbarContainer {
     position: fixed;
-    top: 60px; /* 🔹 Header ke neeche adjust karega */
+    top: 60px; /* Header ke neeche adjust karega */
     left: 0;
-    height: calc(100vh - 60px); /* 🔹 Full height sidebar (header ke alawa) */
+    width: 11%; /* Sidebar ki width */
+    height: calc(100vh - 60px); /* Pure viewport height, header ke alawa */
     background-color: white;
-    z-index: 100;
+    overflow-y: auto; /* Vertical scrolling allow karega */
+    overflow-x: hidden; /* Horizontal scroll remove karega */
+    z-index: 999; /* Header ke neeche rahe */
+    transition: width 0.3s ease-in-out; /* Smooth animation */
 }
 
-/* 🔹 Scrollbar ko style karne ke liye (optional) */
-.completeSlidbarConatiner::-webkit-scrollbar {
-    width: 6px; /* 🔹 Scrollbar ki width */
+/* Jab sidebar closed ho */
+.closed {
+    width: 0; /* Sidebar width zero ho jayegi */
+    overflow: hidden; /* Content hide ho jayega */
+    transition: width 0.3s ease-in-out; /* Smooth transition */
 }
 
-.completeSlidbarConatiner::-webkit-scrollbar-thumb {
-    background: #c0c0c0; /* 🔹 Scrollbar ka color */
-    border-radius: 5px; /* 🔹 Round edges */
+/* Scrollbar Styling */
+.CompleteSlidbarContainer::-webkit-scrollbar {
+    width: 6px; /* Scrollbar ka width */
 }
 
-.completeSlidbarConatiner::-webkit-scrollbar-thumb:hover {
-    background: #a0a0a0; /* 🔹 Hover effect */
+.CompleteSlidbarContainer::-webkit-scrollbar-thumb {
+    background: #c0c0c0; /* Scrollbar ka color */
+    border-radius: 5px; /* Round edges */
+}
+
+.CompleteSlidbarContainer::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0; /* Hover effect */
+}
+
+/* Header Styling */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    z-index: 1000; /* Header sabse upar rahe */
 }
