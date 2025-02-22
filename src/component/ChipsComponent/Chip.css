@@ -1,0 +1,26 @@
+.main{
+    position: relative;
+    left: 11%;
+    top: 80px;
+    width: 89%;
+
+    
+}
+.chipsContainer
+{
+   
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.data-from-Youtube{
+    
+    position: fixed;
+    top: 18%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 81.5vh;
+    width: 89%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

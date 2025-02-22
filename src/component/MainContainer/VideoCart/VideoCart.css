@@ -1,0 +1,94 @@
+.VideoCartContainer
+{
+    
+    width: 30%;
+    height: 300px;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+.VideoCartImage
+{
+    width: 100%;
+    height: 77%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+   
+}
+.VideoCartImage>img{
+    width: 97%;
+    height: 90%;
+    border-radius: 10px;
+}
+.VideoCartTitle
+{
+    display: flex;
+ 
+   text-transform: capitalize;
+    width: 100%;
+    
+   
+   
+}
+.VideoCartTitle2 div :nth-child(1)
+{
+    font-size: 18px;
+    margin-right: 10px;
+    width: 20%;
+   display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 2px solid rgb(28, 0, 0);
+}
+.VideoCartTitle2
+{
+    width: 100%;
+
+  
+}
+.logo
+{
+    width: 15%;
+    
+    object-fit: cover;
+    display: flex;
+   
+    justify-content: center;
+
+
+}
+.VideoCartDuration
+{
+    width: 100%;
+    
+    
+}
+.VideoCartDuration>p,.VideoCartDuration>span
+{
+    margin-left: 50px;
+    text-transform: capitalize;
+    font-size: 14px;
+    color: rgb(71, 71, 71);
+    padding: 2px;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+.VideoCartTitle2>p
+{
+    font-weight: bold;
+    font-size: 16px;
+  
+}
+.VideoCartImage>img:hover
+{
+   
+    transition: opacity 0.3s;
+    border-radius: 0px;
+   transform: scale(1.01);
+   opacity: 0.9;
+}
