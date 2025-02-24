@@ -11,10 +11,10 @@ import axios from 'axios';
 import VideoCategory from './GetVideoByCategoryId';
 
 export default function ClickableChips() {
-  const { IsClick, setIsClick } = useContext(OpenCloseContext);
+  const { IsClick, setIsClick,isOpen} = useContext(OpenCloseContext);
   const [Categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null); // ✅ State to track selected category
-
+ 
   // YouTube API se categories fetch karo
   useEffect(() => {
     const getCategories = async () => {
@@ -44,7 +44,7 @@ export default function ClickableChips() {
   }, [setIsClick]);
 
   return (
-    <div className="main">
+    <div className={`${isOpen ? "main" : "not"}`}>
       {IsClick ? (
         <>
           <div className="chipsContainer">
@@ -59,7 +59,8 @@ export default function ClickableChips() {
             </Stack>
           </div>
 
-          <div className="data-from-Youtube">
+          
+          <div className={`${isOpen ? "data-from-Youtube" : "data-from-Youtube1"}`}>
             {selectedCategory ? (
               <VideoCategory categoryId={selectedCategory} />
             ) : (

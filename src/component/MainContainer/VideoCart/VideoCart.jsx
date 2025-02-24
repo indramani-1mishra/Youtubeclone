@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import OpenCloseContext from "../../../Context/OpenCloseContext/OpenCloseContext";
+const image= 'https://cdn.kwork.com/pics/t3/99/23740040-1669138399.jpg';
 
 import { useContext } from "react";
 export default function VideoCart({items}) {
@@ -37,9 +38,10 @@ export default function VideoCart({items}) {
   return (
     <>
       <div className="VideoCartContainer" onClick={onClickHandler}>
-      <Link to={`/watch?id=${items?.id}`}>
+      <Link to={`/watch?id=${items?.id?.videoId? items?.id?.videoId:items?.id}`}>
         <div className="VideoCartImage">
-        <img src={items.snippet.thumbnails.medium.url} alt="thumbnail" />
+        <img src={items?.snippet?.thumbnails?.medium?.url || image} alt="thumbnail" />
+
         </div>
         </Link>
         <div className="VideoCartTitle">
@@ -51,15 +53,15 @@ export default function VideoCart({items}) {
         />
         </div>
         <div className="VideoCartTitle2">
-            <p>{items.snippet.title}</p>
+            <p>{items?.snippet?.title ||"raj mishra"}</p>
         </div>
         </div>
         <div className="VideoCartDuration">
-            <p>{items.snippet.channelTitle}</p>
+            <p>{items?.snippet?.channelTitle||"raj"}</p>
         </div>
         <div className="VideoCartDuration">
         <span>
-  {items.statistics?.viewCount 
+  {items?.statistics?.viewCount 
     ? formatViews(items.statistics.viewCount) 
     : "2.8m"} views
 </span>

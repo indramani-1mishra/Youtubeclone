@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { api } from "../MainContainer/VideoCart/helperCode";
 import axios from "axios";
 import VideoCart from "../MainContainer/VideoCart/VideoCart";
-import './GetVideobycategory.css'
+
 
 const VideoCategory = ({ categoryId }) => {
     const [videos, setVideos] = useState([]);
@@ -27,10 +27,8 @@ const VideoCategory = ({ categoryId }) => {
 
     return (
         <>
-            
-           
                 {videos.map((data) => (
-                    <VideoCart key={data.id.videoId} items={data} />
+                    <VideoCart key={data.id} items={data} />
                 ))}
              
         </>

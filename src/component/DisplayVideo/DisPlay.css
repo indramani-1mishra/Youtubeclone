@@ -1,0 +1,189 @@
+/* Global Styles */
+.all_Container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    background-color: #181818;
+    color: #fff;
+    position: fixed;
+    height: 100%;
+    width: 89%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  
+  /* Video Section */
+  .video_Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 60%;
+  }
+  
+  .video_Player {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 20px;
+  }
+  
+  .video_Frame {
+    width: 100%;
+    height: 500px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Channel Details */
+  .channel_Info {
+    width: 97%;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .channel_Details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .channel_Name {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .channel_Subscribers {
+    font-size: 14px;
+    color: #aaa;
+    margin: 0;
+  }
+  
+  /* Buttons */
+  .subscribe_Button {
+    background-color: #cc0000;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .share_Button, .download_Button {
+    background-color: gray;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  
+  .download_Button {
+    background-color: green;
+  }
+  
+  /* Video Description */
+  .video_Description {
+    width: 90%;
+    max-width: 900px;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #282828;
+  }
+  
+  .desc_Title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .desc_Text {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.6;
+  }
+  
+  /* Right Side (Recommended Videos) */
+  .second_Part {
+    width: 40%;
+    min-height: 100vh;
+    background-color: #121212;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .all_Container {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .video_Container {
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .video_Frame {
+      height: 400px;
+      width: 100%;
+    }
+  
+    .second_Part {
+      width: 100%;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .video_Frame {
+      height: 300px;
+    }
+  
+    .channel_Info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    .subscribe_Button, .share_Button, .download_Button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .video_Frame {
+      height: 250px;
+      width: 440px;
+    }
+    .all_Container {
+        display: flex;
+        flex-direction: row;
+        min-height: 100vh;
+        background-color: #181818;
+        color: #fff;
+        position: fixed;
+        height: 100%;
+        width:100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+      }
+      .video_Container
+      {
+        width: 500px;
+        padding: 20px;
+      }
+  }
+  

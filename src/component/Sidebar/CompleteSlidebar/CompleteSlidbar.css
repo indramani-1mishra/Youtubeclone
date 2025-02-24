@@ -11,6 +11,20 @@
     z-index: 999; /* Header ke neeche rahe */
     transition: width 0.3s ease-in-out; /* Smooth animation */
 }
+.CompleteSlidbarContainer1 {
+    position: fixed;
+    top: 60px; /* Header ke neeche adjust karega */
+    left: 0;
+    width: 6.1%; /* Sidebar ki width */
+    height: calc(100vh - 60px); /* Pure viewport height, header ke alawa */
+    background-color: white;
+    overflow-y: auto; /* Vertical scrolling allow karega */
+    overflow-x: hidden; /* Horizontal scroll remove karega */
+    z-index: 999; /* Header ke neeche rahe */
+    transition: width 0.3s ease-in-out;
+    
+}
+
 
 /* Jab sidebar closed ho */
 .closed {
@@ -41,4 +55,14 @@ header {
     height: 60px;
     background-color: white;
     z-index: 1000; /* Header sabse upar rahe */
+}
+
+@media (max-width:500px)
+{
+    .CompleteSlidbarContainer {
+        display: none;
+    }
+   .CompleteSlidbarContainer1 {
+    display: none;
+   }
 }

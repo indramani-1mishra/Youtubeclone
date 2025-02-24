@@ -19,7 +19,7 @@ export default function CompleteSlidebar() {
             <Explore />
         </div>
             
-  ):<div className="CompleteSlidbarContainer">
+  ):<div className="CompleteSlidbarContainer1">
   <SecondSlider />
   </div>
    

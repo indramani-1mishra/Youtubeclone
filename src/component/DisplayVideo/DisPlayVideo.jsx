@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import axios from "axios";
-import VideoCartContainer from "../MainContainer/VideoContainer/VideoCartContainer";
 import SlideCard from "./SlideSearch/SlideCard/SlideCard";
 import { FaDownload, FaShare } from "react-icons/fa";
+import { formatViews } from "../MainContainer/VideoCart/helperCode";
 
 export default function DisPlayVideo() {
   const [videoId, setVideoId] = useState("");
@@ -12,12 +12,20 @@ export default function DisPlayVideo() {
   const [channelId, setChannelID] = useState("");
   const [channelDetails, setChannelDetails] = useState(null);
   const [videoDetails, setVideoDetails] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const videoId1 = searchParams.get("id");
     if (videoId1) {
       setVideoId(videoId1);
     }
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [searchParams]);
 
   const getVideoDetails = async () => {
@@ -57,39 +65,34 @@ export default function DisPlayVideo() {
   }, [channelId]);
 
   return (
-    <div className="all_Container" style={{
+    <div style={{
       display: "flex",
-      flexDirection: "row",
-     
+      flexDirection: isMobile ? "column" : "row",
       minHeight: "100vh",
       backgroundColor: "#181818",
       color: "#fff",
-     
-      position:"fixed",
+      position: "fixed",
       height: "100%",
-      width: "89%",
-       overflowX: "hidden",
-       overflowY:"scroll"
-
-
-
+      width: isMobile ? "100%" : "89%",
+      overflowX: "hidden",
+      overflowY: "scroll"
     }}>
-
+      
       {/* Left Side: Video Player & Details */}
       <div style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         padding: "20px",
-        width: "60%",
+        width: isMobile ? "100%" : "60%"
       }}>
-
+        
         {/* Video Player */}
         <div style={{ width: "100%", maxWidth: "900px", marginBottom: "20px" }}>
           {videoId ? (
             <iframe
               width="100%"
-              height="500px"
+              height={isMobile ? "250px" : "500px"}
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
               title="YouTube Video"
               frameBorder="0"
@@ -98,7 +101,7 @@ export default function DisPlayVideo() {
               allowFullScreen
               style={{
                 borderRadius: "12px",
-                boxShadow: "0px 0px 15px rgba(255, 255, 255, 0.2)",
+                boxShadow: "0px 0px 15px rgba(255, 255, 255, 0.2)"
               }}
             ></iframe>
           ) : (
@@ -117,8 +120,9 @@ export default function DisPlayVideo() {
           maxWidth: "900px",
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: isMobile ? "center" : "space-between",
           marginTop: "10px",
+          flexDirection: isMobile ? "column" : "row"
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <Avatar
@@ -131,15 +135,10 @@ export default function DisPlayVideo() {
                 {channelDetails?.snippet?.title || "Loading..."}
               </p>
               <p style={{ fontSize: "14px", color: "#aaa", margin: 0 }}>
-                {channelDetails?.statistics?.subscriberCount || "0"} Subscribers
+                {formatViews(channelDetails?.statistics?.subscriberCount) || "0"} Subscribers
               </p>
             </div>
           </div>
-
-
-
-
-
 
           <button style={{
             backgroundColor: "#cc0000",
@@ -149,36 +148,9 @@ export default function DisPlayVideo() {
             border: "none",
             cursor: "pointer",
             fontWeight: "bold",
+            marginTop: isMobile ? "10px" : "0"
           }}>
             Subscribe
-          </button>
-          <span style={{
-            backgroundColor: "gray",
-            color: "white",
-            padding: "10px 16px",
-            borderRadius: "5px",
-            border: "none",
-            cursor: "pointer",
-            fontWeight: "bold",
-            display:"flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}>
-          
-           <span><FaShare style={{marginRight:"5px"}} /></span>
-           <span>share</span>
-           
-          </span>
-          <button style={{
-            backgroundColor: "green",
-            color: "white",
-            padding: "10px 16px",
-            borderRadius: "5px",
-            border: "none",
-            cursor: "pointer",
-            fontWeight: "bold",
-          }}>
-            <FaDownload  style={{marginRight:"5px"}}/>Download
           </button>
         </div>
 
@@ -189,7 +161,7 @@ export default function DisPlayVideo() {
           marginTop: "20px",
           padding: "10px",
           borderRadius: "10px",
-          backgroundColor: "#282828",
+          backgroundColor: "#282828"
         }}>
           <p style={{ fontSize: "16px", fontWeight: "bold" }}>Description</p>
           <p style={{ fontSize: "14px", color: "#aaa", lineHeight: "1.6" }}>
@@ -199,8 +171,8 @@ export default function DisPlayVideo() {
       </div>
 
       {/* Right Side: Recommended Videos */}
-      <div className="second_Part" style={{
-        width: "40%",
+      <div style={{
+        width: isMobile ? "100%" : "40%",
         minHeight: "100vh",
         backgroundColor: "#121212",
         color: "#fff",
@@ -208,13 +180,10 @@ export default function DisPlayVideo() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "flex-start",
+        justifyContent: "flex-start"
       }}>
-       
-        
-       <SlideCard />
+        <SlideCard />
       </div>
-      
     </div>
   );
 }
