@@ -92,3 +92,11 @@
    transform: scale(1.01);
    opacity: 0.9;
 }
+@media (max-width: 500px)
+{
+    .VideoCartContainer
+    {
+      
+
+    }
+}

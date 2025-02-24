@@ -1,4 +1,6 @@
-function formatViews(views) {
+
+
+ export function formatViews(views) {
     if (!views) return "0"; // Agar null/undefined ho to 0 return kare
     let num = Number(views); // Ensure it's a number
 
@@ -11,4 +13,5 @@ function formatViews(views) {
     }
 }
 
-export default formatViews;
+//export default formatViews;
+export const api ="AIzaSyCWH-0AftDJa1SOzcKCKViDhezvLO2BcKE";

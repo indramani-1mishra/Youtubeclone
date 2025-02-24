@@ -1,0 +1,50 @@
+.containerSlideVideo{
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.containerSlideVideo1
+{
+    width: 100%;
+  
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.containerSlideVideo1>img{
+    width: 95%;
+    height: 90%;
+    border-radius: 10px;
+}
+.titel3
+{
+    width: 60%;
+   
+    height: 170px;
+}
+.titel3>span
+{
+   padding: 2px;
+   margin: 5px;
+   color: grey;
+   text-shadow: 0px 0px 10px 13px rgb(107, 17, 11);
+}
+.t{
+    padding: 5px;
+  
+   color: grey;
+}
+.AllSlideContainer
+{
+   
+    position:fixed;
+    width: 35%;
+    height: 88vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
