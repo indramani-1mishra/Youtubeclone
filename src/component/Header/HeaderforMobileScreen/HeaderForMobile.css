@@ -1,0 +1,33 @@
+.HeaderContainerForMobile
+{
+   
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    cursor: pointer;
+}
+.YoutubeImageContainer2
+{
+    
+    width: 30%;
+  
+
+}
+.YoutubeImageContainer2>img{
+    width: 100%;
+    height: 100%;
+   
+}
+.Containerforsmall
+{
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2px;
+}
+.notificationConatainer2{
+    padding: 10px;
+}

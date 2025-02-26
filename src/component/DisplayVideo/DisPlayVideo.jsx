@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import axios from "axios";
 import SlideCard from "./SlideSearch/SlideCard/SlideCard";
-import { FaDownload, FaShare } from "react-icons/fa";
-import { formatViews } from "../MainContainer/VideoCart/helperCode";
+//import { FaDownload, FaShare } from "react-icons/fa";
+import { api2, formatViews } from "../MainContainer/VideoCart/helperCode";
+import OpenCloseContext from "../../Context/OpenCloseContext/OpenCloseContext";
+import { BsHeart } from "react-icons/bs";
+import { AiFillLike } from "react-icons/ai";
 
 export default function DisPlayVideo() {
   const [videoId, setVideoId] = useState("");
@@ -13,7 +16,9 @@ export default function DisPlayVideo() {
   const [channelDetails, setChannelDetails] = useState(null);
   const [videoDetails, setVideoDetails] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [comments,setComments] = useState([]);
 
+ const {isOpen} = useContext(OpenCloseContext);
   useEffect(() => {
     const videoId1 = searchParams.get("id");
     if (videoId1) {
@@ -30,8 +35,9 @@ export default function DisPlayVideo() {
 
   const getVideoDetails = async () => {
     try {
+      
       const response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=AIzaSyCWH-0AftDJa1SOzcKCKViDhezvLO2BcKE`
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${api2}`
       );
       const videoData = response.data.items[0].snippet;
       setChannelID(videoData.channelId);
@@ -44,18 +50,38 @@ export default function DisPlayVideo() {
   const getChannelDetails = async () => {
     try {
       const response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=AIzaSyCWH-0AftDJa1SOzcKCKViDhezvLO2BcKE`
+        `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${api2}`
       );
       setChannelDetails(response.data.items[0]);
     } catch (error) {
       console.error("Error fetching channel details:", error);
     }
   };
+    const getCommentsFromAPI = async ()=>
+    {
+      try
+      {
+         const response =await axios.get(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${api2}`);
+         console.log(response.data.items);
+         setComments(response.data.items);
+         console.log(videoId);
+      }
+      catch(error)
+      {
+        console.log("Error: " + error);
+      }
+
+    }
+    useEffect(() => {
+      getCommentsFromAPI();
+    }, [videoId]);
+
 
   useEffect(() => {
     if (videoId) {
       getVideoDetails();
     }
+    console.log(videoId);
   }, [videoId]);
 
   useEffect(() => {
@@ -73,7 +99,7 @@ export default function DisPlayVideo() {
       color: "#fff",
       position: "fixed",
       height: "100%",
-      width: isMobile ? "100%" : "89%",
+      width: isMobile ? "100%":(isOpen? "89%": "94%") ,
       overflowX: "hidden",
       overflowY: "scroll"
     }}>
@@ -116,7 +142,7 @@ export default function DisPlayVideo() {
 
         {/* Channel Details */}
         <div style={{
-          width: "97%",
+          width: "100%",
           maxWidth: "900px",
           display: "flex",
           alignItems: "center",
@@ -168,6 +194,81 @@ export default function DisPlayVideo() {
             {videoDetails?.description || "No description available"}
           </p>
         </div>
+        <div style={{
+  width: "90%",
+  maxWidth: "900px",
+  marginTop: "20px",
+  marginBottom: "60px",
+  padding: "10px",
+  borderRadius: "10px",
+  backgroundColor: "#282828"
+}}>
+  <p style={{ fontSize: "16px", fontWeight: "bold" }}>Comments</p>
+  
+  {comments.length > 0 ? (
+    comments.map((comment, index) => {
+      const commentData = comment.snippet.topLevelComment.snippet;
+      return (
+        <div key={index} style={{
+          display: "flex",
+          alignItems: "flex-start",
+          gap: "10px",
+          padding: "10px",
+          borderBottom: "1px solid #444",
+          marginBottom: "10px"
+        }}>
+          {/* Profile Picture */}
+          <img
+            src={commentData.authorProfileImageUrl}
+            alt="Profile"
+            style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+          />
+
+          {/* Comment Content */}
+          <div style={{ flex: 1 }}>
+            <p style={{ fontSize: "14px", fontWeight: "bold", margin: 0 }}>
+              {commentData.authorDisplayName}
+            </p>
+            <p style={{ fontSize: "14px", color: "#aaa", margin: 0 }}>
+              {commentData.textDisplay}
+            </p>
+
+            {/* Like & Reply Buttons */}
+            <div style={{ display: "flex", alignItems: "center", marginTop: "5px" }}>
+              {/* Like Button */}
+              <button style={{
+                background: "none",
+                border: "none",
+                color: "#aaa",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                marginRight: "10px"
+              }}>
+              <AiFillLike style={{marginRight:"5px"}} />{commentData.likeCount}
+              </button>
+
+              {/* Reply Button */}
+              <button style={{
+                background: "none",
+                border: "none",
+                color: "#aaa",
+                cursor: "pointer"
+              }}>
+                Reply
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    })
+  ) : (
+    <p style={{ fontSize: "14px", color: "#aaa" }}>No comments available</p>
+  )}
+</div>
+
+
+
       </div>
 
       {/* Right Side: Recommended Videos */}

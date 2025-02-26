@@ -15,3 +15,5 @@
 
 //export default formatViews;
 export const api ="AIzaSyCWH-0AftDJa1SOzcKCKViDhezvLO2BcKE";
+export const api2 = "AIzaSyDD5BpZSzVz_mh1w079o8sZ2mpvsa6_gt8";
+

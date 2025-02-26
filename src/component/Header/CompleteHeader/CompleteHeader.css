@@ -8,3 +8,11 @@
     position: fixed;
     overflow: hidden;
 }
+@media (max-width: 500px) {
+    .headerConatainer{
+        
+        
+    }
+    
+
+}

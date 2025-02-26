@@ -3,7 +3,7 @@
     left: 11%;
     top: 80px;
     width: 89%;
-    border: 2px  solid black;
+   
 
     
 }
@@ -12,7 +12,7 @@
     left: 6%;
     top: 80px;
     width: 94%;
-    border: 2px  solid black;
+   
 
 
 }
@@ -50,25 +50,31 @@
 @media (max-width: 500px) {
 
     .main{
-        position: relative;
+        position: fixed;
         left: 0;
         right: 0;
-        top: 80px;
+        top: 8%;
         width: 100%;
-        border: 2px  solid black;
+     
+        overflow-y: hidden;
+        overflow-x: scroll;
+
+        
     
         
     }
     .data-from-Youtube{
     
         position: fixed;
-        top: 18%;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        height: 81.5vh;
+        top: 14%;
+        overflow-y: 0;
+        overflow-x: 0;
+        height: 100%;
         width: 99%;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         flex-wrap: wrap;
+        
+       
     }
 }

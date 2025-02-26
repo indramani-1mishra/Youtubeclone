@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { api } from "../MainContainer/VideoCart/helperCode";
+import { api, api2 } from "../MainContainer/VideoCart/helperCode";
 import axios from "axios";
 import VideoCart from "../MainContainer/VideoCart/VideoCart";
 
@@ -7,10 +7,11 @@ import VideoCart from "../MainContainer/VideoCart/VideoCart";
 const VideoCategory = ({ categoryId }) => {
     const [videos, setVideos] = useState([]);
 
+    
     useEffect(() => {
         const getVideo = async () => {
             try {
-                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&videoCategoryId=${categoryId}&maxResults=10&regionCode=IN&key=${api}`;
+                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&videoCategoryId=${categoryId}&maxResults=10&regionCode=IN&key=${api2}`;
                 const response = await axios.get(url);
                 console.log(response.data.items+' items');
                 console.log("hello world");
