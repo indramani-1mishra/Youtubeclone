@@ -12,6 +12,7 @@
 {
     
     width: 30%;
+    margin-left: 15px;
   
 
 }
@@ -30,4 +31,14 @@
 }
 .notificationConatainer2{
     padding: 10px;
+}
+.searchbar3
+{
+    width: 100%;
+   
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    justify-content: space-between;
+
 }
