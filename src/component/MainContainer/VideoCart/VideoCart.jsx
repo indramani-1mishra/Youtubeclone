@@ -10,7 +10,7 @@ const image= 'https://cdn.kwork.com/pics/t3/99/23740040-1669138399.jpg';
 import { useContext } from "react";
 export default function VideoCart({items}) {
     const [titleIcon, subtitleIcon] = useState();
-  const {IsClick,setIsClick} = useContext(OpenCloseContext);
+  const {IsClick,setIsClick,isOpen} = useContext(OpenCloseContext);
   
     const getTitleIcon = async ()=>
     {
@@ -37,7 +37,7 @@ export default function VideoCart({items}) {
     }
   return (
     <>
-      <div className="VideoCartContainer" onClick={onClickHandler}>
+      <div className="VideoCartContainer" onClick={onClickHandler} style={{width:isOpen?"30%":"23%"}} >
       <Link to={`/watch?id=${items?.id?.videoId? items?.id?.videoId:items?.id}`}>
         <div className="VideoCartImage">
         <img src={items?.snippet?.thumbnails?.medium?.url || image} alt="thumbnail" />
