@@ -57,7 +57,7 @@
        justify-content: space-around;
         width: 100%;
         padding: 5px;
-       
+       align-items: center;
     }
     .containerSlideVideo1{
         height: 190px;
@@ -66,8 +66,9 @@
     }
     .titel3{
         height: 120px;
-        width: 100%;
+        width: 90%;
         margin-top: 10px;
+        
     }
     .AllSlideContainer{
         width: 100%;

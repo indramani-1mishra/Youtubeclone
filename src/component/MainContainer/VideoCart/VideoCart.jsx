@@ -37,7 +37,7 @@ export default function VideoCart({items}) {
     }
   return (
     <>
-      <div className="VideoCartContainer" onClick={onClickHandler} style={{width:isOpen?"30%":"23%"}} >
+      <div className={isOpen?"VideoCartContainer":"not4Open"} onClick={onClickHandler} >
       <Link to={`/watch?id=${items?.id?.videoId? items?.id?.videoId:items?.id}`}>
         <div className="VideoCartImage">
         <img src={items?.snippet?.thumbnails?.medium?.url || image} alt="thumbnail" />
