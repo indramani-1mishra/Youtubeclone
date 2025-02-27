@@ -9,7 +9,7 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { FaMicrophone } from 'react-icons/fa';
 
 export default function HeaderForMobile() {
-    const youtubeImage = "https://t3.ftcdn.net/jpg/06/34/31/96/360_F_634319630_txtgmPLEEQ8o4zaxec2WKrLWUBqdBBQn.jpg";
+    const youtubeImage = "https://abdulla-youtube-clone.vercel.app/assets/yt-logo-DzwK7Zh0.png";
     const [isTouch, SetTouch] = useState(true);
 
     const onclickHandler = () => {

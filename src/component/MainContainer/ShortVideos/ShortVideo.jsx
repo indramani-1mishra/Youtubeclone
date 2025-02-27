@@ -1,14 +1,15 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
-import { api2 } from '../VideoCart/helperCode';
+import { api, api2 } from '../VideoCart/helperCode';
 import VideoCart from '../VideoCart/VideoCart';
 
 export default function ShortVideo() {
     const [shortVideo,SetShortVideo] = useState([]);
 
+    
 const getShortVideo= async()=>
 {
-const response =await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=short&key=${api2}`);
+const response =await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=short&key=${api}`);
 SetShortVideo(response.data.items);
 
 }

@@ -4,7 +4,7 @@ import { Avatar } from "@mui/material";
 import axios from "axios";
 import SlideCard from "./SlideSearch/SlideCard/SlideCard";
 //import { FaDownload, FaShare } from "react-icons/fa";
-import { api2, formatViews } from "../MainContainer/VideoCart/helperCode";
+import { api, api2, formatViews } from "../MainContainer/VideoCart/helperCode";
 import OpenCloseContext from "../../Context/OpenCloseContext/OpenCloseContext";
 import { BsHeart } from "react-icons/bs";
 import { AiFillLike } from "react-icons/ai";
@@ -37,7 +37,7 @@ export default function DisPlayVideo() {
     try {
       
       const response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${api2}`
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${api}`
       );
       const videoData = response.data.items[0].snippet;
       setChannelID(videoData.channelId);
@@ -50,7 +50,7 @@ export default function DisPlayVideo() {
   const getChannelDetails = async () => {
     try {
       const response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${api2}`
+        `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${api}`
       );
       setChannelDetails(response.data.items[0]);
     } catch (error) {
@@ -61,7 +61,7 @@ export default function DisPlayVideo() {
     {
       try
       {
-         const response =await axios.get(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${api2}`);
+         const response =await axios.get(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${api}`);
          console.log(response.data.items);
          setComments(response.data.items);
          console.log(videoId);

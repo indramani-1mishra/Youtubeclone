@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function SlideCard() {
 const api ="AIzaSyCWH-0AftDJa1SOzcKCKViDhezvLO2BcKE";
 
-  const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=100&regionCode=IN&key=${api2}`;
+  const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=100&regionCode=IN&key=${api}`;
   const [details,SetDetails] = useState([]);
   const getResponse = async()=>
   {

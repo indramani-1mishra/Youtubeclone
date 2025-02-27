@@ -12,7 +12,7 @@ export default function VideoBySearch() {
         const getItemBySearch = async () => {
             try {
                 const response = await axios.get(
-                    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchValue}&key=${api2}`
+                    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchValue}&key=${api}`
                 );
                 console.log(response.data.items, "items");
                 setVideoBySearch(response.data.items);

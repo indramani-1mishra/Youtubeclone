@@ -24,7 +24,7 @@ export default function ClickableChips() {
     const getCategories = async () => {
       try {
         const response = await axios.get(
-          `https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=${api2}`
+          `https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=${api}`
         );
         setCategories(response.data.items);
       } catch (error) {

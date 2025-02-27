@@ -11,7 +11,7 @@ const VideoCategory = ({ categoryId }) => {
     useEffect(() => {
         const getVideo = async () => {
             try {
-                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&videoCategoryId=${categoryId}&maxResults=10&regionCode=IN&key=${api2}`;
+                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&videoCategoryId=${categoryId}&maxResults=10&regionCode=IN&key=${api}`;
                 const response = await axios.get(url);
                 console.log(response.data.items+' items');
                 console.log("hello world");

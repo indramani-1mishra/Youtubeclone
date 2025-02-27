@@ -1,6 +1,6 @@
 import { Avatar } from "@mui/material";
 import './VideoCart.css';
-import {api2, formatViews} from "./helperCode";
+import {api, api2, formatViews} from "./helperCode";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ export default function VideoCart({items}) {
   
     const getTitleIcon = async ()=>
     {
-        const response = await axios.get(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${items.snippet.channelId}&key=${api2}`);
+        const response = await axios.get(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${items.snippet.channelId}&key=${api}`);
        
         subtitleIcon(response.data.items[0].snippet.thumbnails.high.url);
     }
