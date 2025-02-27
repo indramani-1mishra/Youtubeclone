@@ -52,22 +52,22 @@ export default function VideoCart({items}) {
           sx={{ width: 40, height: 40, cursor: "pointer" }}
         />
         </div>
-        <div className="VideoCartTitle2">
+     <div className="VideoCartTitle2">
             <p>{items?.snippet?.title ||"raj mishra"}</p>
-        </div>
-        </div>
-        <div className="VideoCartDuration">
-            <p>{items?.snippet?.channelTitle||"raj"}</p>
+        </div> 
         </div>
         <div className="VideoCartDuration">
-        <span>
+          
+            <span>{items?.snippet?.channelTitle||"raj"}</span>
+            <span>
   {items?.statistics?.viewCount 
     ? formatViews(items.statistics.viewCount) 
     : "2.8m"} views
 </span>
+ <span>23 min ago</span>
 
-  <span>23 min ago</span>
-      </div>
+        </div>
+      {/**  <div className="VideoCartDuration"></div> */}
     </div>
     </>
   )

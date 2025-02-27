@@ -48,3 +48,37 @@
     overflow-x: hidden;
     overflow-y: scroll;
 }
+@media (max-width:500px)
+{
+    .containerSlideVideo{
+        
+        display: flex;
+        flex-direction: column;
+       justify-content: space-around;
+        width: 100%;
+        padding: 5px;
+       
+    }
+    .containerSlideVideo1{
+        height: 190px;
+        width: 100%;
+        
+    }
+    .titel3{
+        height: 120px;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .AllSlideContainer{
+        width: 100%;
+        height: 100vh;
+        position: relative;
+       
+       
+    }
+    .containerSlideVideo1>img{
+        width: 100%;
+        height: 100%;
+    }
+ 
+}

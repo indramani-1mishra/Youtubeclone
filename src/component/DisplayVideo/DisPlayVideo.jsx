@@ -17,6 +17,8 @@ export default function DisPlayVideo() {
   const [videoDetails, setVideoDetails] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [comments,setComments] = useState([]);
+  const [commentsVisibility, setCommentsVisibility] = useState(false);
+  const[discriptions, setDiscriptions] = useState(false);
 
  const {isOpen} = useContext(OpenCloseContext);
   useEffect(() => {
@@ -90,11 +92,22 @@ export default function DisPlayVideo() {
     }
   }, [channelId]);
 
+  const onCommentButtonClicked =()=>
+  {
+      setCommentsVisibility(prev =>!prev);
+  
+  }
+  const onDiscriptionClick=()=>
+  {
+    setDiscriptions(prev =>!prev);
+  }
+
   return (
     <div style={{
       display: "flex",
       flexDirection: isMobile ? "column" : "row",
-      minHeight: "100vh",
+
+      minHeight: isMobile ? "100vh" : "50px",
       backgroundColor: "#181818",
       color: "#fff",
       position: "fixed",
@@ -109,12 +122,12 @@ export default function DisPlayVideo() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: "20px",
+        padding: "1px",
         width: isMobile ? "100%" : "60%"
       }}>
         
         {/* Video Player */}
-        <div style={{ width: "100%", maxWidth: "900px", marginBottom: "20px" }}>
+        <div style={{ width: "100%", maxWidth: "900px", marginBottom: "14px" }}>
           {videoId ? (
             <iframe
               width="100%"
@@ -126,8 +139,9 @@ export default function DisPlayVideo() {
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
               style={{
-                borderRadius: "12px",
-                boxShadow: "0px 0px 15px rgba(255, 255, 255, 0.2)"
+                borderRadius: "3px",
+                boxShadow: "0px 0px 15px rgba(255, 255, 255, 0.2)",
+                
               }}
             ></iframe>
           ) : (
@@ -136,7 +150,7 @@ export default function DisPlayVideo() {
         </div>
 
         {/* Video Title */}
-        <p style={{ fontSize: "24px", fontWeight: "bold", marginTop: "10px", textAlign: "center" }}>
+        <p style={{ fontSize: "18px", fontWeight: "bold", marginTop: "3px", textAlign: "justify",wordSpacing:"1px"}}>
           {videoDetails?.title || "Loading title..."}
         </p>
 
@@ -146,9 +160,9 @@ export default function DisPlayVideo() {
           maxWidth: "900px",
           display: "flex",
           alignItems: "center",
-          justifyContent: isMobile ? "center" : "space-between",
+          justifyContent: isMobile ? "space-between" : "space-between",
           marginTop: "10px",
-          flexDirection: isMobile ? "column" : "row"
+          flexDirection: isMobile ? "row" : "row"
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <Avatar
@@ -179,38 +193,53 @@ export default function DisPlayVideo() {
             Subscribe
           </button>
         </div>
+        <div className="VideoCartDuration">
+          
+          <span>{channelDetails?.snippet?.channelTitle||"raj"}</span>
+          <span>
+{channelDetails?.statistics?.viewCount 
+  ? formatViews(channelDetails.statistics.viewCount) 
+  : "2.8m"} views
+</span>
+<span>23 min ago</span>
+
+      </div>
 
         {/* Video Description */}
         <div style={{
-          width: "90%",
+          width: "100%",
           maxWidth: "900px",
-          marginTop: "20px",
+          marginTop: isMobile? "20px" : "1px",
+          marginBottom:isMobile? "0px" : "20px",
           padding: "10px",
           borderRadius: "10px",
-          backgroundColor: "#282828"
+          backgroundColor: "#282828",
+          cursor:"pointer",
         }}>
-          <p style={{ fontSize: "16px", fontWeight: "bold" }}>Description</p>
-          <p style={{ fontSize: "14px", color: "#aaa", lineHeight: "1.6" }}>
+          <p style={{ fontSize: "16px", fontWeight: "bold" }} onClick={onDiscriptionClick}>{discriptions?"hide discription":"show description"}</p>
+          <p style={{ fontSize: "14px", color: "#aaa", lineHeight: "1.6" ,display:discriptions? "block" : "none", }}>
             {videoDetails?.description || "No description available"}
           </p>
         </div>
         <div style={{
-  width: "90%",
+
+  width: "100%",
+  
   maxWidth: "900px",
-  marginTop: "20px",
-  marginBottom: "60px",
-  padding: "10px",
-  borderRadius: "10px",
+  marginTop:isMobile? "20px" : "30px",
+ marginBottom:"60px",
+  padding: "5px",
+  borderRadius: "5px",
   backgroundColor: "#282828"
 }}>
-  <p style={{ fontSize: "16px", fontWeight: "bold" }}>Comments</p>
+  <p style={{ fontSize: "16px", fontWeight: "bold", marginBottom: isMobile?"2px":"100px",textTransform:"capitalize", cursor:"pointer"}} onClick={onCommentButtonClicked}>{commentsVisibility?"close comments....":"open comments...."}</p>
   
   {comments.length > 0 ? (
     comments.map((comment, index) => {
       const commentData = comment.snippet.topLevelComment.snippet;
       return (
         <div key={index} style={{
-          display: "flex",
+         display: commentsVisibility ? "flex" : "none" ,
           alignItems: "flex-start",
           gap: "10px",
           padding: "10px",
@@ -277,11 +306,12 @@ export default function DisPlayVideo() {
         minHeight: "100vh",
         backgroundColor: "#121212",
         color: "#fff",
-        padding: "20px",
-        display: "flex",
+        padding: isMobile ? "0" : "20px",
+        display: isMobile ? "block" : "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "flex-start"
+        justifyContent: "flex-start",
+        
       }}>
         <SlideCard />
       </div>
