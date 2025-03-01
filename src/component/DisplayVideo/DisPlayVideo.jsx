@@ -19,6 +19,7 @@ export default function DisPlayVideo() {
   const [comments,setComments] = useState([]);
   const [commentsVisibility, setCommentsVisibility] = useState(false);
   const[discriptions, setDiscriptions] = useState(false);
+  const [subscribe,setsubscribe] = useState(false);
 
  const {isOpen} = useContext(OpenCloseContext);
   useEffect(() => {
@@ -181,16 +182,18 @@ export default function DisPlayVideo() {
           </div>
 
           <button style={{
-            backgroundColor: "#cc0000",
+           
             color: "white",
             padding: "10px 16px",
             borderRadius: "20px",
             border: "none",
             cursor: "pointer",
             fontWeight: "bold",
-            marginTop: isMobile ? "10px" : "0"
-          }}>
-            Subscribe
+            marginTop: isMobile ? "10px" : "0",
+            backgroundColor:  subscribe?"green":"#cc0000"
+            
+          }} onClick={()=>setsubscribe(!subscribe)}>
+           {subscribe ? "Subscribed" : "subscribe"}
           </button>
         </div>
         <div className="VideoCartDuration">
